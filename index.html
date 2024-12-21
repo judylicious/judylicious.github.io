@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confession Animation</title>
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .text {
+            font-size: 30px;
+            color: #333;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 5s forwards;
+        }
+
+        .button:hover {
+            background-color: #ff1a1a;
+        }
+
+        .no-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 20px;
+            background-color: #4d4dff;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 6s forwards;
+        }
+
+        .no-button:hover {
+            background-color: #3333ff;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .heart {
+            font-size: 40px;
+            color: #ff4d4d;
+            margin-top: 20px;
+            animation: heartBeat 1.5s infinite;
+        }
+
+        @keyframes heartBeat {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="text">Hey... I've been meaning to tell you something.</div>
+        <div class="question">Will you be my girlfriend?</div>
+        <button class="button" onclick="respondYes()">Yes</button>
+        <button class="no-button" onclick="respondNo()">No</button>
+        <div class="heart">❤️</div>
+    </div>
+
+    <script>
+        function respondYes() {
+            const heart = document.querySelector(".heart");
+            const text = document.querySelector(".text");
+            const question = document.querySelector(".question");
+            const yesButton = document.querySelector(".button");
+            const noButton = document.querySelector(".no-button");
+
+            // Animate response for "Yes"
+            text.innerHTML = "I'm so happy you said yes!";
+            heart.style.color = "#ff66b2"; // Change heart color to pink
+            question.style.opacity = "0"; // Hide question
+            yesButton.style.opacity = "0"; // Hide yes button
+            noButton.style.opacity = "0"; // Hide no button
+        }
+
+        function respondNo() {
+            const text = document.querySelector(".text");
+            const question = document.querySelector(".question");
+            const yesButton = document.querySelector(".button");
+            const noButton = document.querySelector(".no-button");
+
+            // Show "Try Again" message when user clicks "No"
+            text.innerHTML = "Try again!";
+            question.style.opacity = "0"; // Hide question
+            yesButton.style.opacity = "0"; // Hide yes button
+            noButton.style.opacity = "0"; // Hide no button
+        }
+    </script>
+
+</body>
+</html>
